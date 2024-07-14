@@ -10,13 +10,13 @@ create table clients (
   Password varchar(255) not null,
   FirstName varchar(255) not null,
   LastName varchar(255) not null,
-  NumberPhone  varchar(10) null
+  NumberPhone  varchar(10) null,
   PRIMARY KEY (Id_Client )
 );
 
 create table translators (
   Id_Translator int NOT NULL AUTO_INCREMENT,
-  Email varchar(255) not null,git 
+  Email varchar(255) not null,
   Password varchar(255) not null,
   FirstName varchar(255) not null,
   LastName varchar(255) not null,
@@ -34,13 +34,13 @@ create table Model_docs(
  Id_Client int,
  Id_Translator int ,
   FOREIGN KEY (Id_Client) REFERENCES clients (Id_Client),
-  FOREIGN KEY (Id_Translator) REFERENCES translators(Id_Doc),
+  FOREIGN KEY (Id_Translator) REFERENCES translators(Id_Translator),
   PRIMARY KEY (Id_Doc)
-)
+);
 
 create table Estimation(
   Id_Tarification  int NOT NULL AUTO_INCREMENT, 
-  Email varchar(255) not null unique,
+  Email varchar(255) not null,
   Id_Translator int ,
   FirstClientName varchar(255) not null,
   LastClientName varchar(255) not null,
@@ -49,7 +49,7 @@ create table Estimation(
   PRIMARY KEY (Id_Tarification),
   FOREIGN KEY (Id_Translator) REFERENCES translators(Id_Translator),
   FOREIGN KEY (Id_Doc) REFERENCES Model_docs(Id_Doc)
- )
+ );
 
 /*create table disponibility (
   id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,

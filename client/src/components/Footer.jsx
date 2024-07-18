@@ -1,5 +1,4 @@
 import "../styles/Footer.scss";
-import { AiFillFacebook, AiFillLinkedin } from "react-icons/ai";
 
 function Footer() {
   return (
@@ -10,10 +9,7 @@ function Footer() {
       </div>
       <div>
         <h5>Suivez-nous sur</h5>
-        <div className="footer-icons">
-          <AiFillFacebook className="footer-icon" />
-          <AiFillLinkedin className="footer-icon" />
-        </div>
+        <div className="footer-icons">FB LI</div>
       </div>
     </section>
   );

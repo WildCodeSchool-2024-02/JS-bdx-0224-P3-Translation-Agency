@@ -1,0 +1,20 @@
+.footer-section {
+  background-color: #1d1e20;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 2%;
+  padding-right: 2%;
+}
+
+.footer-icons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15%;
+}
+
+.footer-icon {
+  color: rgb(128, 128, 255);
+}

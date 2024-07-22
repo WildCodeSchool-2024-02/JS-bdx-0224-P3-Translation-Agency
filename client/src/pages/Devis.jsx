@@ -1,10 +1,14 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import { useState, useEffect } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import "../styles/Devis.scss";
 import france from "../assets/images/france.png";
 import italy from "../assets/images/italy.png";
 import usa from "../assets/images/usa.png";
 import germany from "../assets/images/germany.png";
 import headerImg from "../assets/images/im4.jpg";
+import { createDevis } from "../services/devis";
 
 const getFlag = (value) => {
   if (value === "Français") {
@@ -32,6 +36,13 @@ function Devis() {
     traducteurName:
       "Maître Leslie Alexander" ||
       JSON.parse(window.localStorage.getItem("trad")).name,
+  });
+  const [devisData, setDevisData] = useState({
+    Email: "",
+    Id_Translator: 1,
+    FirstClientName: "",
+    LastClientName: "",
+    Language_Doc: "",
   });
 
   useEffect(() => {
@@ -63,6 +74,13 @@ function Devis() {
 
     getData();
   }, []);
+
+  const notify = (devis) => toast(`Devis: ${devis}`);
+  const handleSendDevis = async () => {
+    const devis = await createDevis(devisData);
+    if (!devis) console.error("error: ", devis);
+    notify(devis.data.devis);
+  };
 
   return (
     <div className="devis-main-container">
@@ -131,13 +149,42 @@ function Devis() {
       </section>
       <form className="devis-form" onSubmit={(e) => e.preventDefault()}>
         <div className="devis-form-row">
-          <input type="text" placeholder="Nom" required />
-          <input type="text" placeholder="Prénom" required />
+          <input
+            onChange={(e) =>
+              setDevisData({ ...devisData, LastClientName: e.target.value })
+            }
+            type="text"
+            placeholder="Nom"
+            required
+          />
+          <input
+            onChange={(e) =>
+              setDevisData({ ...devisData, FirstClientName: e.target.value })
+            }
+            type="text"
+            placeholder="Prénom"
+            required
+          />
+          <input
+            onChange={(e) =>
+              setDevisData({ ...devisData, Email: e.target.value })
+            }
+            type="text"
+            placeholder="Email"
+            required
+          />
         </div>
-        <select className="devis-form-select" required>
+        <select
+          onChange={(e) =>
+            setDevisData({ ...devisData, Language_Doc: e.target.value })
+          }
+          className="devis-form-select"
+          required
+        >
+          {/* 
           <option value="" disabled selected>
             Sélectionner la langue de traduction
-          </option>
+          </option> */}
           <option value="Anglais">Anglais</option>
           <option value="Français">Français</option>
           <option value="Italien">Italien</option>
@@ -149,10 +196,15 @@ function Devis() {
           className="devis-form-file-import"
           required
         />
-        <button type="submit" className="devis-form-button">
+        <button
+          type="button"
+          className="devis-form-button"
+          onClick={handleSendDevis}
+        >
           Voir le devis
         </button>
       </form>
+      <ToastContainer />
     </div>
   );
 }

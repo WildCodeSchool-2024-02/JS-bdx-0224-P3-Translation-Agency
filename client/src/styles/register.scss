@@ -1,0 +1,68 @@
+/* src/styles/register.scss */
+.backH {
+  background: url("https://thumbs.dreamstime.com/z/banni%C3%A8re-horizontale-avec-des-mains-dactylographiant-sur-le-clavier-d-ordinateur-portable-et-%C3%A9crivant-papier-travail-de-116628322.jpg?ct=jpeg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.form_register {
+  width: 90%;
+  max-width: 400px;
+  padding: 2rem;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  border-radius: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.form_title {
+  color: white;
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+}
+
+.input_register {
+  width: 100%;
+  height: 2.5rem;
+  font-size: 1.1rem;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  padding: 0 1rem;
+}
+
+.input_register::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.btn_register {
+  background-color: #8338ec;
+  color: white;
+  width: 100%;
+  height: 3rem;
+  border-radius: 15px;
+  border: none;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.btn_register:hover {
+  background-color: #6a00ff;
+}
+
+@media (max-width: 768px) {
+  .form_register {
+    width: 80%;
+    padding: 1.5rem;
+  }
+}

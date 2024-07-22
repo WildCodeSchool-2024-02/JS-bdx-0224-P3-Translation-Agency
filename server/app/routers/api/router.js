@@ -7,8 +7,11 @@ const router = express.Router();
 /* ************************************************************************* */
 
 const itemsRouter = require("./items/router");
+const translatorRouter = require('./translators/translatorRouter')
+
 
 router.use("/items", itemsRouter);
+router.use("/translators", translatorRouter)
 
 /* ************************************************************************* */
 

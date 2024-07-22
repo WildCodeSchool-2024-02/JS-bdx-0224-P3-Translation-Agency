@@ -1,8 +1,18 @@
-create table admins_App (
+create table users_App (
   Id_User int NOT NULL AUTO_INCREMENT,
   Email varchar(255) not null unique,
+  RoleUser char(1) not null,
   Password varchar(255) not null,
-  PRIMARY KEY (Id_User)
+  PRIMARY KEY (Id_User,RoleUser)
+);
+create table administrateur (
+  Id_admin int NOT NULL AUTO_INCREMENT,
+  Email varchar(255) not null unique,
+  Password varchar(255) not null,
+  FirstName varchar(255) not null,
+  LastName varchar(255) not null,
+  NumberPhone  varchar(10) null,
+  PRIMARY KEY (Id_admin)
 );
 create table clients (
   Id_Client int NOT NULL AUTO_INCREMENT,
@@ -10,13 +20,13 @@ create table clients (
   Password varchar(255) not null,
   FirstName varchar(255) not null,
   LastName varchar(255) not null,
-  NumberPhone  varchar(10) null
+  NumberPhone  varchar(10) null,
   PRIMARY KEY (Id_Client )
 );
 
 create table translators (
   Id_Translator int NOT NULL AUTO_INCREMENT,
-  Email varchar(255) not null,git 
+  Email varchar(255) not null,
   Password varchar(255) not null,
   FirstName varchar(255) not null,
   LastName varchar(255) not null,
@@ -34,7 +44,7 @@ create table Model_docs(
  Id_Client int,
  Id_Translator int ,
   FOREIGN KEY (Id_Client) REFERENCES clients (Id_Client),
-  FOREIGN KEY (Id_Translator) REFERENCES translators(Id_Doc),
+  FOREIGN KEY (Id_Translator) REFERENCES translators(Id_Translator),
   PRIMARY KEY (Id_Doc)
 )
 
@@ -44,7 +54,8 @@ create table Estimation(
   Id_Translator int ,
   FirstClientName varchar(255) not null,
   LastClientName varchar(255) not null,
-  Language_Doc varchar(255) not null,
+  OriginalLanguage_Doc varchar(255) not null,
+  TranslatedLanguage_Doc varchar(255) not null,
   Id_Doc int, 
   PRIMARY KEY (Id_Tarification),
   FOREIGN KEY (Id_Translator) REFERENCES translators(Id_Translator),

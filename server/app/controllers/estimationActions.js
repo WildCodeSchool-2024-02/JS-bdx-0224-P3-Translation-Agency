@@ -42,9 +42,13 @@ const add = async (req, res, next) => {
   try {
     // Insert the estimation into the database
     const insertId = await tables.estimation.create(estimationBody);
-
+    let devis = '0euro';
+    if(estimationBody.Language_Doc === "Français") devis = '30euro';
+    if(estimationBody.Language_Doc === "Anglais") devis = '10euro';
+    if(estimationBody.Language_Doc === "Italien") devis = '20euro';
+    if(estimationBody.Language_Doc === "Allemand") devis = '40euro';
     // Respond with HTTP 201 (Created) and the ID of the newly inserted estimation
-    res.status(201).json({ insertId });
+    res.status(201).json({ insertId, devis });
   } catch (err) {
     // Pass any errors to the error-handling middleware
     next(err);

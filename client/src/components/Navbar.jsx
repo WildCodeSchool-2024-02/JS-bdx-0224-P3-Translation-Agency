@@ -51,7 +51,7 @@ function NavBar() {
 
   return (
     <>
-      <img className="nav-logo" src={logo} alt="logo nebula" />
+      <img className="nav-logo" src={logo} alt="logo " />
 
       <nav ref={menuRef}>
         <button
@@ -76,13 +76,13 @@ function NavBar() {
             <Link
               to="/traducteur"
               onClick={updateMenu}
-              aria-label="link to Our destinations page"
+              aria-label="link to translator page"
             >
               Service
             </Link>
           </li>
           <li>
-            <Link to="/devis" aria-label="link to the our vehicles page">
+            <Link to="/devis" aria-label="link estimation page">
               Devis
             </Link>
           </li>
@@ -90,7 +90,7 @@ function NavBar() {
             <Link
               to="/contact"
               onClick={updateMenu}
-              aria-label="link to the Traffic info page"
+              aria-label="link contact page"
             >
               Contact
             </Link>
@@ -99,7 +99,7 @@ function NavBar() {
             <Link
               to="/profile"
               onClick={updateMenu}
-              aria-label="link to the Traffic info page"
+              aria-label="link to profile page"
             >
               Profile
             </Link>

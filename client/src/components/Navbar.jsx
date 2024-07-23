@@ -51,7 +51,7 @@ function NavBar() {
 
   return (
     <>
-      <img className="nav-logo" src={logo} alt="logo nebula" />
+      <img className="nav-logo" src={logo} alt="logo " />
 
       <nav ref={menuRef}>
         <button

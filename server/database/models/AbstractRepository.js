@@ -17,6 +17,15 @@ class AbstractRepository {
     // Provide access to the database client
     this.database = database;
   }
+
+  async findOne(whereClause, values) {
+    // Execute the SQL SELECT query to retrieve a specific object  by whereClause
+    const [rows, fields] = await this.database.query(
+      `select * from ${this.table}  WHERE ` + whereClause, values
+    );
+    // Return the first row of the result, which represents the user
+    return rows[0];
+  }
 }
 
 // Ready to export
